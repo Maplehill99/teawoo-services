@@ -12,7 +12,7 @@
     .tea-gradient { background: radial-gradient(circle at top right, #f0fdf4, #fdfbf7); }
     
     /* 3D Flip Logic */
-    .flip-card { perspective: 1000px; height: 500px; cursor: pointer; }
+    .flip-card { perspective: 1000px; height: 520px; cursor: pointer; }
     .flip-card-inner {
       position: relative; width: 100%; height: 100%;
       transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
@@ -29,7 +29,7 @@
 
     .logo-box { height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
     .logo-box img { max-height: 100%; max-width: 100%; object-fit: contain; }
-    .product-img { width: 100%; height: 180px; border-radius: 1rem; object-fit: cover; margin-bottom: 1.5rem; }
+    .product-img { width: 100%; height: 200px; border-radius: 1rem; object-fit: cover; margin-bottom: 1rem; }
     .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
   </style>
 </head>
@@ -42,7 +42,7 @@
     </a>
     <div class="hidden md:flex space-x-8 text-sm font-semibold text-stone-600">
       <a href="#scout" class="hover:text-green-800 transition">AI Scout</a>
-      <a href="#showcase" class="hover:text-green-800 transition">Merchant Showcase</a>
+      <a href="#showcase" class="hover:text-green-800 transition">Showcase</a>
       <a href="#packages" class="hover:text-green-800 transition">Services</a>
       <a href="#apply" class="bg-green-800 text-white px-5 py-2 rounded-full hover:bg-green-700 transition shadow-sm">Join Network</a>
     </div>
@@ -50,42 +50,45 @@
 
   <header class="max-w-6xl mx-auto pt-24 pb-20 px-6 text-center">
     <div class="inline-block px-4 py-1.5 mb-6 text-[11px] font-bold tracking-[0.2em] text-green-700 uppercase bg-green-100 rounded-full">
-      Vertical Growth for Tea Merchants
+      Vertical Business Ecosystem
     </div>
     <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-stone-900 mb-8 leading-[1.1]">
       Traditional Tea. <br/>
-      <span class="text-green-800 italic font-serif font-light underline decoration-green-200 underline-offset-8">Intelligent Growth.</span>
+      <span class="text-green-800 italic font-serif font-light underline decoration-green-200 underline-offset-8">Digital Intelligence.</span>
     </h1>
-    <p class="text-xl text-stone-600 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
-      TEAWOO provides Southern California tea brands with AI-driven event scouting, digital brand management, and localized merchant promotion.
+    <p class="text-xl text-stone-600 max-w-3xl mx-auto mb-12 leading-relaxed font-light">
+      TEAWOO provides tea brands with <strong>AI-driven event scouting</strong>, <strong>digital brand management</strong>, and <strong>localized merchant promotion</strong> to bridge heritage with modern commerce.
     </p>
     <div class="flex flex-wrap justify-center gap-4">
-      <a href="#scout" class="bg-stone-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-stone-800 transition shadow-xl">Start AI Scout</a>
+      <a href="#scout" class="bg-stone-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-stone-800 transition shadow-xl font-mono">Run Scout v1.0</a>
       <a href="#apply" class="bg-white border border-stone-200 px-8 py-4 rounded-2xl font-bold hover:bg-stone-50 transition shadow-sm">Merchant Application</a>
     </div>
   </header>
 
-  <section id="scout" class="max-w-5xl mx-auto px-6 mb-32">
+  <section id="scout" class="max-w-5xl mx-auto px-6 mb-32 text-left">
     <div class="bg-white rounded-[2.5rem] shadow-2xl border border-stone-100 overflow-hidden">
       <div class="grid md:grid-cols-5">
         <div class="md:col-span-2 bg-stone-900 p-10 text-white flex flex-col justify-between">
           <div>
-            <span class="text-green-400 font-mono text-xs uppercase tracking-widest">Market Intel v1.0</span>
-            <h2 class="text-3xl font-bold mt-4 leading-tight">AI Event <br/>Scout Agent</h2>
+            <span class="text-green-400 font-mono text-xs uppercase tracking-widest">Phase 1: Deployment</span>
+            <h2 class="text-3xl font-bold mt-4 leading-tight italic font-serif">AI Event <br/>Scout Agent</h2>
             <p class="text-stone-400 mt-6 text-sm leading-relaxed font-light">
-              Enter your Southern California ZIP code. Our agent analyzes foot traffic and demographics for your next market activation.
+              Our <strong>Version 1.0</strong> engine is currently optimized for the <strong>Southern California</strong> market.
+            </p>
+            <p class="text-stone-500 mt-4 text-xs italic">
+              Launching in phases: Future adoption scheduled for major state markets and regional tea hubs.
             </p>
           </div>
           <div class="mt-12">
-            <div class="flex items-center gap-2 text-xs font-bold text-stone-500 uppercase tracking-widest">
+            <div class="flex items-center gap-2 text-[10px] font-bold text-stone-500 uppercase tracking-widest">
               <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-              Live: LA • OC • IE
+              LIVE: LA • OC • IE • SB
             </div>
           </div>
         </div>
         
         <div class="md:col-span-3 p-10 bg-white">
-          <label class="block text-xs font-bold uppercase tracking-widest text-stone-400 mb-4">Target Region (Zip Code)</label>
+          <label class="block text-xs font-bold uppercase tracking-widest text-stone-400 mb-4 font-mono">SoCal Target Zip Code</label>
           <div class="flex gap-3 mb-8">
             <input type="text" id="zipInput" placeholder="91103" maxlength="5" class="flex-1 bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 outline-none focus:ring-2 focus:ring-green-800 mono text-xl">
             <button onclick="runScout()" id="scoutBtn" class="bg-green-800 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-700 transition shadow-md">Analyze</button>
@@ -95,9 +98,9 @@
             <div class="p-6 bg-green-50 rounded-2xl border border-green-100">
                 <h3 id="event-name" class="text-xl font-bold text-green-900 font-serif italic"></h3>
                 <p id="event-desc" class="text-green-700 text-sm font-medium mt-1"></p>
-                <div class="mt-4 pt-4 border-t border-green-200">
-                    <p class="text-[10px] font-bold text-green-700 uppercase tracking-widest mb-2 text-left">Merchant Strategy</p>
-                    <p id="ai-tip" class="text-stone-700 text-sm leading-relaxed text-left"></p>
+                <div class="mt-4 pt-4 border-t border-green-200 text-left">
+                    <p class="text-[10px] font-bold text-green-700 uppercase tracking-widest mb-2">Merchant Strategy</p>
+                    <p id="ai-tip" class="text-stone-700 text-sm leading-relaxed"></p>
                 </div>
             </div>
           </div>
@@ -106,12 +109,12 @@
     </div>
   </section>
 
-  <section id="showcase" class="max-w-6xl mx-auto px-6 py-24 border-t border-stone-100">
+  <section id="showcase" class="max-w-6xl mx-auto px-6 py-24 border-t border-stone-100 text-left">
     <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
-      <div class="max-w-2xl text-left">
+      <div class="max-w-2xl">
         <h2 class="text-4xl font-bold text-stone-900 font-serif italic">Merchant Showcase</h2>
         <p class="text-stone-500 mt-4 leading-relaxed">
-            Click a card to reveal signature heritage products. TEAWOO promotes the finest selections from our specialized merchant network.
+            Click a card to reveal signature heritage products. TEAWOO provides localized promotion and digital showcases for our specialized merchant network.
         </p>
       </div>
       <a href="#apply" class="text-sm font-bold text-green-800 underline decoration-green-200 underline-offset-4">Join Showcase</a>
@@ -192,31 +195,30 @@
       </div>
 
     </div>
-    
     <div class="mt-16 text-[10px] text-stone-400 font-mono text-center uppercase tracking-[0.2em]">
       Promoting the Goods and Services of Third-Party Tea Merchants
     </div>
   </section>
 
-  <section id="apply" class="max-w-4xl mx-auto px-6 py-24">
+  <section id="apply" class="max-w-4xl mx-auto px-6 py-24 text-left">
     <div class="bg-white rounded-[2.5rem] border border-stone-200 p-12 shadow-sm">
       <h2 class="text-3xl font-bold text-stone-900 mb-2 italic font-serif">Merchant Application</h2>
-      <p class="text-stone-500 mb-10">Submit your brand details to join the TEAWOO network. Verified by Aimpressive Inc.</p>
+      <p class="text-stone-500 mb-10">Submit your brand details to join the TEAWOO ecosystem. Services operated by Aimpressive Inc.</p>
       
       <form id="merchant-form" class="space-y-6">
         <div class="grid md:grid-cols-2 gap-6">
-          <div class="space-y-2">
+          <div class="space-y-2 text-left">
             <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Brand Name</label>
             <input type="text" name="BrandName" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-800 transition">
           </div>
-          <div class="space-y-2">
+          <div class="space-y-2 text-left">
             <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Email Address</label>
             <input type="email" name="Email" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-800 transition">
           </div>
         </div>
-        <div class="space-y-2">
-          <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Merchant Focus</label>
-          <textarea name="BrandFocus" rows="3" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-800 transition" placeholder="Tell us about your tea heritage..."></textarea>
+        <div class="space-y-2 text-left">
+          <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Brand Focus</label>
+          <textarea name="BrandFocus" rows="3" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-800 transition" placeholder="Tell us about your tea heritage and regional focus..."></textarea>
         </div>
         <button type="submit" id="submit-btn" class="w-full bg-green-800 text-white py-4 rounded-2xl font-bold text-lg hover:bg-green-700 transition shadow-lg border border-green-900/20">
           Submit Application
@@ -227,16 +229,16 @@
   </section>
 
   <footer class="bg-stone-900 text-stone-400 py-20 px-6">
-    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
-      <div class="text-left">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 text-left">
+      <div>
         <div class="text-2xl font-bold text-white mb-6">TEA<span class="font-light opacity-50">WOO</span><span class="text-xs align-top font-normal ml-1">™</span></div>
         <p class="text-sm leading-relaxed max-w-sm font-light">
-          A vertical ecosystem for the global tea trade. Providing merchant promotion and AI-assisted market planning for heritage tea brands.
+          A vertical ecosystem for the tea trade. Providing merchant promotion, digital brand management, and AI-assisted market planning for heritage brands.
         </p>
       </div>
       <div class="md:text-right">
-        <p class="text-xs font-bold text-white uppercase tracking-widest mb-6 font-mono tracking-tighter">Administration</p>
-        <div class="text-sm space-y-2 font-light">
+        <p class="text-xs font-bold text-white uppercase tracking-widest mb-6 font-mono">Administration</p>
+        <div class="text-sm font-light space-y-2">
           <p>Operated by <span class="text-white font-medium">Aimpressive Inc.</span></p>
           <p>Diamond Bar, California, USA</p>
           <p class="pt-8 text-[10px] text-stone-500 uppercase tracking-[0.2em]">TEAWOO™ is a pending trademark for Class 35 Business Services.</p>
@@ -282,10 +284,10 @@
 
     // SCOUT LOGIC
     const reports = {
-      '91103': { name: 'Rose Bowl Swap Meet (Pasadena)', desc: 'High Affinity: Heritage Seekers & Collectors.', tip: 'Crowd profile values age and craft. Showcase Aged Pu-erh and Gongfu ceramics. AI Strategy: Draft story-led signage focusing on vintage years.' },
-      '92626': { name: 'OC Fair Grounds (Costa Mesa)', desc: 'High Affinity: Wellness & Families.', tip: 'OC demographics favor cold-brew Green Teas and Organic blends. Strategy: Offer "Family Starter Sets" and emphasize health benefits.' },
-      '92501': { name: 'Downtown Riverside Market', desc: 'High Affinity: Community Residents.', tip: 'Community-driven volume. Best for loose-leaf refills and tea-starter kits. AI Strategy: Implement TEAWOO digital loyalty QR for repeat purchases.' },
-      'default': { name: 'SoCal Regional Markets', desc: 'Targeting: Regional Discovery.', tip: 'General market audience. Focus on clear brand positioning and tasting samples. AI Strategy: Use TEAWOO to scout neighboring Farmers Markets for multi-event routing.' }
+      '91103': { name: 'Rose Bowl Swap Meet (Pasadena)', desc: 'High Affinity: Heritage Seekers & Collectors.', tip: 'Crowd values age and craft. Showcase Aged Fu-erh. AI Strategy: Draft story-led signage focusing on Shaanxi heritage.' },
+      '92626': { name: 'OC Fair Grounds (Costa Mesa)', desc: 'High Affinity: Wellness & Families.', tip: 'Wellness-focused demographic. Showcase Organic Green Teas. AI Strategy: Promote iced samples and floral infusions via Yelp.' },
+      '92501': { name: 'Downtown Riverside Market', desc: 'High Affinity: Community Residents.', tip: 'Community volume focus. Best for loose-leaf refills. AI Strategy: Implement TEAWOO digital loyalty QR for repeat purchases.' },
+      'default': { name: 'SoCal Regional Market Circuit', desc: 'Targeting: Regional Discovery.', tip: 'General market audience. Focus on clear brand positioning. AI Strategy: Use TEAWOO to scout neighboring Farmers Markets for multi-event routing.' }
     };
 
     function runScout() {

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TEAWOO | AI Merchant Scout & Heritage Showcase</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+    .glass { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(14px); }
+    .tea-gradient { background: radial-gradient(circle at top right, #f0fdf4, #fdfbf7); }
+    
+    /* 3D Flip Logic */
+    .flip-card { perspective: 1000px; height: 500px; cursor: pointer; }
+    .flip-card-inner {
+      position: relative; width: 100%; height: 100%;
+      transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-style: preserve-3d;
+    }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back {
+      position: absolute; width: 100%; height: 100%;
+      -webkit-backface-visibility: hidden; backface-visibility: hidden;
+      border-radius: 2rem; padding: 2.5rem; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .flip-card-front { background: #ffffff; border: 1px solid #e7e5e4; }
+    .flip-card-back { transform: rotateY(180deg); background: #fafaf9; border: 2px solid #166534; }
+
+    .logo-box { height: 80px; display: flex; align-items: center; justify-content: center; margin-bottom: 2rem; }
+    .logo-box img { max-height: 100%; max-width: 100%; object-fit: contain; }
+    .product-img { width: 100%; height: 180px; border-radius: 1rem; object-fit: cover; margin-bottom: 1.5rem; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+</head>
+
+<body class="tea-gradient text-stone-900 min-h-screen">
+
+  <nav class="glass sticky top-0 z-50 border-b border-stone-200 px-6 py-4 flex justify-between items-center">
+    <a href="#" class="text-2xl font-bold tracking-tight text-green-900">
+      TEA<span class="font-light text-stone-500">WOO</span><span class="text-xs align-top font-normal ml-1">™</span>
+    </a>
+    <div class="hidden md:flex space-x-8 text-sm font-semibold text-stone-600">
+      <a href="#scout" class="hover:text-green-800 transition">AI Scout</a>
+      <a href="#showcase" class="hover:text-green-800 transition">Merchant Showcase</a>
+      <a href="#packages" class="hover:text-green-800 transition">Services</a>
+      <a href="#apply" class="bg-green-800 text-white px-5 py-2 rounded-full hover:bg-green-700 transition shadow-sm">Join Network</a>
+    </div>
+  </nav>
+
+  <header class="max-w-6xl mx-auto pt-24 pb-20 px-6 text-center">
+    <div class="inline-block px-4 py-1.5 mb-6 text-[11px] font-bold tracking-[0.2em] text-green-700 uppercase bg-green-100 rounded-full">
+      Vertical Growth for Tea Merchants
+    </div>
+    <h1 class="text-5xl md:text-7xl font-bold tracking-tight text-stone-900 mb-8 leading-[1.1]">
+      Traditional Tea. <br/>
+      <span class="text-green-800 italic font-serif font-light underline decoration-green-200 underline-offset-8">Intelligent Growth.</span>
+    </h1>
+    <p class="text-xl text-stone-600 max-w-2xl mx-auto mb-12 leading-relaxed font-light">
+      TEAWOO provides Southern California tea brands with AI-driven event scouting, digital brand management, and localized merchant promotion.
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <a href="#scout" class="bg-stone-900 text-white px-8 py-4 rounded-2xl font-bold hover:bg-stone-800 transition shadow-xl">Start AI Scout</a>
+      <a href="#apply" class="bg-white border border-stone-200 px-8 py-4 rounded-2xl font-bold hover:bg-stone-50 transition shadow-sm">Merchant Application</a>
+    </div>
+  </header>
+
+  <section id="scout" class="max-w-5xl mx-auto px-6 mb-32">
+    <div class="bg-white rounded-[2.5rem] shadow-2xl border border-stone-100 overflow-hidden">
+      <div class="grid md:grid-cols-5">
+        <div class="md:col-span-2 bg-stone-900 p-10 text-white flex flex-col justify-between">
+          <div>
+            <span class="text-green-400 font-mono text-xs uppercase tracking-widest">Market Intel v1.0</span>
+            <h2 class="text-3xl font-bold mt-4 leading-tight">AI Event <br/>Scout Agent</h2>
+            <p class="text-stone-400 mt-6 text-sm leading-relaxed font-light">
+              Enter your Southern California ZIP code. Our agent analyzes foot traffic and demographics for your next market activation.
+            </p>
+          </div>
+          <div class="mt-12">
+            <div class="flex items-center gap-2 text-xs font-bold text-stone-500 uppercase tracking-widest">
+              <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+              Live: LA • OC • IE
+            </div>
+          </div>
+        </div>
+        
+        <div class="md:col-span-3 p-10 bg-white">
+          <label class="block text-xs font-bold uppercase tracking-widest text-stone-400 mb-4">Target Region (Zip Code)</label>
+          <div class="flex gap-3 mb-8">
+            <input type="text" id="zipInput" placeholder="91103" maxlength="5" class="flex-1 bg-stone-50 border border-stone-200 rounded-2xl px-6 py-4 outline-none focus:ring-2 focus:ring-green-800 mono text-xl">
+            <button onclick="runScout()" id="scoutBtn" class="bg-green-800 text-white px-8 py-4 rounded-2xl font-bold hover:bg-green-700 transition shadow-md">Analyze</button>
+          </div>
+
+          <div id="scout-result" class="hidden animate-in fade-in slide-in-from-right duration-500">
+            <div class="p-6 bg-green-50 rounded-2xl border border-green-100">
+                <h3 id="event-name" class="text-xl font-bold text-green-900 font-serif italic"></h3>
+                <p id="event-desc" class="text-green-700 text-sm font-medium mt-1"></p>
+                <div class="mt-4 pt-4 border-t border-green-200">
+                    <p class="text-[10px] font-bold text-green-700 uppercase tracking-widest mb-2 text-left">Merchant Strategy</p>
+                    <p id="ai-tip" class="text-stone-700 text-sm leading-relaxed text-left"></p>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="showcase" class="max-w-6xl mx-auto px-6 py-24 border-t border-stone-100">
+    <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+      <div class="max-w-2xl text-left">
+        <h2 class="text-4xl font-bold text-stone-900 font-serif italic">Merchant Showcase</h2>
+        <p class="text-stone-500 mt-4 leading-relaxed">
+            Click a card to reveal signature heritage products. TEAWOO promotes the finest selections from our specialized merchant network.
+        </p>
+      </div>
+      <a href="#apply" class="text-sm font-bold text-green-800 underline decoration-green-200 underline-offset-4">Join Showcase</a>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8">
+      
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front shadow-sm">
+            <div class="text-left">
+              <div class="logo-box">
+                <img src="JINGWEIFUTEA.png" alt="Jingwei Fu Tea">
+              </div>
+              <h3 class="text-2xl font-bold text-stone-900">Jingwei Fu Tea</h3>
+              <p class="text-[10px] font-bold text-green-700 uppercase tracking-widest mt-2 mb-4">Fu Brick Tea Specialist</p>
+              <p class="text-sm text-stone-500 leading-relaxed italic">Preserving Shaanxi tradition with the probiotic "Golden Flower" fungi.</p>
+            </div>
+            <button class="text-[10px] font-bold text-stone-400 uppercase tracking-[0.2em] border-t pt-4">Click to Flip</button>
+          </div>
+          <div class="flip-card-back shadow-xl">
+            <div class="text-left">
+              <img src="FUTEA.jpg" alt="Fu Tea Brick" class="product-img shadow-md">
+              <h4 class="text-lg font-bold text-stone-900 mb-2 font-serif italic">Golden Flower Fu Brick</h4>
+              <p class="text-xs text-stone-600 leading-relaxed mb-6 italic">Hand-pressed dark tea with woody sweetness and probiotic benefits.</p>
+            </div>
+            <a href="http://www.jingweifuteausa.com/" target="_blank" class="w-full py-3 bg-green-800 text-white rounded-xl text-xs font-bold hover:bg-green-700 transition text-center uppercase">Visit Store</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front shadow-sm">
+            <div class="text-left">
+              <div class="logo-box bg-stone-900 rounded-xl p-4">
+                <img src="SEVENTEAHOUSELOGO.avif" alt="Seven Tea House">
+              </div>
+              <h3 class="text-2xl font-bold text-stone-900">Seven Tea House</h3>
+              <p class="text-[10px] font-bold text-green-700 uppercase tracking-widest mt-2 mb-4">Curated Loose Leaf</p>
+              <p class="text-sm text-stone-500 leading-relaxed italic">Artisanal sourcing from legendary mountains for the modern tea ceremony.</p>
+            </div>
+            <button class="text-[10px] font-bold text-stone-400 uppercase tracking-[0.2em] border-t pt-4">Click to Flip</button>
+          </div>
+          <div class="flip-card-back shadow-xl">
+            <div class="text-left">
+              <img src="SEVENTEAHOUSEClassicVariety.webp" alt="Classic Collection" class="product-img shadow-md">
+              <h4 class="text-lg font-bold text-stone-900 mb-2 font-serif italic">Classic Variety Collection</h4>
+              <p class="text-xs text-stone-600 leading-relaxed mb-6 italic">A curation featuring Imperial Dragon Well and Golden Monkey Black Tea.</p>
+            </div>
+            <a href="https://seventeahouse.com/" target="_blank" class="w-full py-3 bg-green-800 text-white rounded-xl text-xs font-bold hover:bg-green-700 transition text-center uppercase">Visit Store</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front shadow-sm">
+            <div class="text-left">
+              <div class="logo-box">
+                <img src="ZENLOGO.png" alt="Zen's Tea">
+              </div>
+              <h3 class="text-2xl font-bold text-stone-900">Zen's Tea</h3>
+              <p class="text-[10px] font-bold text-green-700 uppercase tracking-widest mt-2 mb-4">Mindful Artisanal Blends</p>
+              <p class="text-sm text-stone-500 leading-relaxed italic">Connecting heritage leaves to mindfulness through sustainable harvesting.</p>
+            </div>
+            <button class="text-[10px] font-bold text-stone-400 uppercase tracking-[0.2em] border-t pt-4">Click to Flip</button>
+          </div>
+          <div class="flip-card-back shadow-xl">
+            <div class="text-left">
+              <img src="ZENTEA.jpg" alt="Gardenia Flower Tea" class="product-img shadow-md">
+              <h4 class="text-lg font-bold text-stone-900 mb-2 font-serif italic">Gardenia Osmanthus</h4>
+              <p class="text-xs text-stone-600 leading-relaxed mb-6 italic">Delicate Sichuan floral notes paired with meditative base leaves.</p>
+            </div>
+            <a href="https://www.zens.asia/chayeT/601.html" target="_blank" class="w-full py-3 bg-green-800 text-white rounded-xl text-xs font-bold hover:bg-green-700 transition text-center uppercase">Visit Store</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+    <div class="mt-16 text-[10px] text-stone-400 font-mono text-center uppercase tracking-[0.2em]">
+      Promoting the Goods and Services of Third-Party Tea Merchants
+    </div>
+  </section>
+
+  <section id="apply" class="max-w-4xl mx-auto px-6 py-24">
+    <div class="bg-white rounded-[2.5rem] border border-stone-200 p-12 shadow-sm">
+      <h2 class="text-3xl font-bold text-stone-900 mb-2 italic font-serif">Merchant Application</h2>
+      <p class="text-stone-500 mb-10">Submit your brand details to join the TEAWOO network. Verified by Aimpressive Inc.</p>
+      
+      <form id="merchant-form" class="space-y-6">
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="space-y-2">
+            <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Brand Name</label>
+            <input type="text" name="BrandName" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-800 transition">
+          </div>
+          <div class="space-y-2">
+            <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Email Address</label>
+            <input type="email" name="Email" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-800 transition">
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label class="text-[10px] font-bold uppercase tracking-[0.2em] text-stone-400">Merchant Focus</label>
+          <textarea name="BrandFocus" rows="3" required class="w-full bg-stone-50 border border-stone-200 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-green-800 transition" placeholder="Tell us about your tea heritage..."></textarea>
+        </div>
+        <button type="submit" id="submit-btn" class="w-full bg-green-800 text-white py-4 rounded-2xl font-bold text-lg hover:bg-green-700 transition shadow-lg border border-green-900/20">
+          Submit Application
+        </button>
+        <p id="form-status" class="text-center mt-4 font-bold text-sm"></p>
+      </form>
+    </div>
+  </section>
+
+  <footer class="bg-stone-900 text-stone-400 py-20 px-6">
+    <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16">
+      <div class="text-left">
+        <div class="text-2xl font-bold text-white mb-6">TEA<span class="font-light opacity-50">WOO</span><span class="text-xs align-top font-normal ml-1">™</span></div>
+        <p class="text-sm leading-relaxed max-w-sm font-light">
+          A vertical ecosystem for the global tea trade. Providing merchant promotion and AI-assisted market planning for heritage tea brands.
+        </p>
+      </div>
+      <div class="md:text-right">
+        <p class="text-xs font-bold text-white uppercase tracking-widest mb-6 font-mono tracking-tighter">Administration</p>
+        <div class="text-sm space-y-2 font-light">
+          <p>Operated by <span class="text-white font-medium">Aimpressive Inc.</span></p>
+          <p>Diamond Bar, California, USA</p>
+          <p class="pt-8 text-[10px] text-stone-500 uppercase tracking-[0.2em]">TEAWOO™ is a pending trademark for Class 35 Business Services.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // FORM LOGIC
+    var form = document.getElementById("merchant-form");
+    async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("form-status");
+        var btn = document.getElementById("submit-btn");
+        var data = new FormData(event.target);
+        btn.innerText = "Processing...";
+        btn.disabled = true;
+
+        fetch("https://formspree.io/f/xzddbglj", {
+            method: "POST",
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                status.innerHTML = "✓ Application Received. We will contact you at " + data.get('Email') + ".";
+                status.className = "text-center mt-4 font-bold text-sm text-green-500";
+                form.reset();
+                btn.innerText = "Application Sent";
+            } else {
+                status.innerHTML = "Error. Please contact info@teawoo.com.";
+                status.className = "text-center mt-4 font-bold text-sm text-red-500";
+                btn.disabled = false;
+                btn.innerText = "Try Again";
+            }
+        }).catch(error => {
+            status.innerHTML = "Network error. Please try again.";
+            status.className = "text-center mt-4 font-bold text-sm text-red-500";
+            btn.disabled = false;
+        });
+    }
+    form.addEventListener("submit", handleSubmit);
+
+    // SCOUT LOGIC
+    const reports = {
+      '91103': { name: 'Rose Bowl Swap Meet (Pasadena)', desc: 'High Affinity: Heritage Seekers & Collectors.', tip: 'Crowd profile values age and craft. Showcase Aged Pu-erh and Gongfu ceramics. AI Strategy: Draft story-led signage focusing on vintage years.' },
+      '92626': { name: 'OC Fair Grounds (Costa Mesa)', desc: 'High Affinity: Wellness & Families.', tip: 'OC demographics favor cold-brew Green Teas and Organic blends. Strategy: Offer "Family Starter Sets" and emphasize health benefits.' },
+      '92501': { name: 'Downtown Riverside Market', desc: 'High Affinity: Community Residents.', tip: 'Community-driven volume. Best for loose-leaf refills and tea-starter kits. AI Strategy: Implement TEAWOO digital loyalty QR for repeat purchases.' },
+      'default': { name: 'SoCal Regional Markets', desc: 'Targeting: Regional Discovery.', tip: 'General market audience. Focus on clear brand positioning and tasting samples. AI Strategy: Use TEAWOO to scout neighboring Farmers Markets for multi-event routing.' }
+    };
+
+    function runScout() {
+      const zip = document.getElementById('zipInput').value.trim();
+      const btn = document.getElementById('scoutBtn');
+      const result = document.getElementById('scout-result');
+      if (!/^\d{5}$/.test(zip)) { alert("Please enter a valid 5-digit ZIP."); return; }
+      btn.innerText = "...";
+      btn.disabled = true;
+      setTimeout(() => {
+        const data = reports[zip] || reports['default'];
+        document.getElementById('event-name').innerText = data.name;
+        document.getElementById('event-desc').innerText = data.desc;
+        document.getElementById('ai-tip').innerText = data.tip;
+        result.classList.remove('hidden');
+        btn.innerText = "Analyze";
+        btn.disabled = false;
+        result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 600);
+    }
+  </script>
+</body>
+</html>
